@@ -1,4 +1,4 @@
-# Audio Passthrough
+# Listentothis
 
 Send whatever you're listening to (a video, a song, a stream) into your microphone
 input, so people on a Discord or WhatsApp call can hear it along with your voice.
