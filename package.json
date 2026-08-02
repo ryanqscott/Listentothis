@@ -1,0 +1,22 @@
+{
+  "name": "audio-passthrough",
+  "version": "1.0.0",
+  "description": "Route system audio (what you hear) into a virtual microphone so others can hear it on Discord/WhatsApp calls.",
+  "private": true,
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn src/server.ts"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "naudiodon2": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.30",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Audio Passthrough</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>Audio Passthrough</h1>
+    <p class="subtitle">Send what you're hearing into your microphone input.</p>
+
+    <div id="ffmpegWarning" class="banner banner-error hidden">
+      ffmpeg was not found on your PATH. Install ffmpeg and restart this app.
+    </div>
+
+    <section class="panel">
+      <label class="field">
+        <span>System audio source</span>
+        <span class="hint">The device that mirrors what you hear (e.g. "Stereo Mix"). This list is every recording-capable device Windows exposes, same as "Your microphone" below.</span>
+        <div class="row">
+          <select id="systemSource"></select>
+          <button id="refreshDevices" class="btn-secondary" type="button">Refresh</button>
+        </div>
+      </label>
+
+      <label class="field">
+        <span>Volume</span>
+        <div class="row">
+          <input id="systemVolume" type="range" min="0" max="2" step="0.05" value="1" />
+          <span id="systemVolumeLabel" class="value">100%</span>
+        </div>
+      </label>
+
+      <label class="field checkbox-field">
+        <input id="includeMic" type="checkbox" checked />
+        <span>Also send my microphone (so people still hear you talk)</span>
+      </label>
+
+      <label class="field" id="micSourceField">
+        <span>Your microphone</span>
+        <select id="micSource"></select>
+      </label>
+
+      <label class="field" id="micVolumeField">
+        <span>Mic volume</span>
+        <div class="row">
+          <input id="micVolume" type="range" min="0" max="2" step="0.05" value="1" />
+          <span id="micVolumeLabel" class="value">100%</span>
+        </div>
+      </label>
+
+      <label class="field">
+        <span>Destination (virtual microphone playback device)</span>
+        <span class="hint">Requires a virtual audio cable, e.g. VB-Audio Virtual Cable. Pick its "Input" (playback) device.</span>
+        <select id="destination"></select>
+      </label>
+    </section>
+
+    <section class="control">
+      <button id="toggleBtn" class="toggle-btn" type="button">Start</button>
+      <div id="statusText" class="status">Stopped</div>
+      <div id="errorText" class="error hidden"></div>
+    </section>
+
+    <section class="help">
+      <h2>Setup</h2>
+      <ol>
+        <li>Install <strong>ffmpeg</strong> and make sure it's on your PATH.</li>
+        <li>Install a virtual audio cable (e.g. VB-Audio Virtual Cable) &mdash; it creates a "CABLE Input" playback device and a "CABLE Output" recording device.</li>
+        <li>On Windows, enable "Stereo Mix" under Sound Settings &rarr; Recording devices (or pick your virtual cable's own loopback device if your card doesn't have Stereo Mix).</li>
+        <li>Pick the devices above and press Start.</li>
+        <li>In Discord/WhatsApp, set your microphone input to "CABLE Output (VB-Audio Virtual Cable)".</li>
+      </ol>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

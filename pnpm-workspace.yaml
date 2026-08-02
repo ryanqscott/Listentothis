@@ -1,0 +1,3 @@
+allowBuilds:
+  naudiodon2: false
+  segfault-handler: false
